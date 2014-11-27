@@ -90,15 +90,16 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         /// Bitmap that will hold color information
         /// </summary>
         private WriteableBitmap colorBitmap;
+
         /// <summary>
         /// Intermediate storage for the color data received from the camera
         /// </summary>
         private byte[] colorPixels;
         
         //Informacion de feedback
-        private string info = "Iniciar movimiento";
+        private string info = "Iniciando ejercicio...";
 
-        //Variable para controlar los movimientos
+        //Variable para controlar la secuencia de movimientos
         private int estado = 0;
 
         //Variable para comprobar el numero de repeticiones
@@ -183,7 +184,6 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
 
             if (this.sensor != null)
             {
-                // En ImageE se proyectará el esqueleto y en ImageC la imagen en color del senson kinect
                 // Display the drawing using our image control
                 this.Image.Source = this.imageSource;
 
@@ -242,6 +242,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
 
         /// <summary>
         /// Event handler for Kinect sensor's ColorFrameReady event
+        /// Se añade la funcion para mostrar la imagen en color captada por la kinect
         /// </summary>
         /// <param name="sender">object sending the event</param>
         /// <param name="e">event arguments</param>
@@ -349,7 +350,8 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             this.DrawBone(skeleton, drawingContext, JointType.KneeRight, JointType.AnkleRight);
             this.DrawBone(skeleton, drawingContext, JointType.AnkleRight, JointType.FootRight);
 
-            comprobarEstado(skeleton);
+            //Se comprueba en que estado del ejercicio se encuentra
+            this.comprobarEstado(skeleton);
 
             // Render Joints
             foreach (Joint joint in skeleton.Joints)
@@ -424,33 +426,38 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         //Comprueba en que estado se encuentra el ejercicio
         private void comprobarEstado(Skeleton skeleton)
         {
+            //Estado inicial, no cambia de estado hasta que el usuario se encuentra en la posicion inicial
+            //Piernas abiertas a la altura de los hombros y los brazos relajados pegados al tronco
             if (this.estado == 0)
             {
                 this.movimientoInicial(skeleton);
             }
+            //Completada la posicion inicial se comprueba el movimiento uno
+            //Extender los brazos hacia los lados a la altura de lso hombros
             if (this.estado == 1)
             {
-                this.infoFeedbackText.Text = "Bien, estas en la posicion inicial, ahora pon los brazos en cruz";
                 this.movimiento1(skeleton);
             }
+            //Completado el movimiento uno comprueba el movimiento dos
+            //Levantar los brazos por encima de la cabeza en el eje X hasta juntar las manos
             if (this.estado == 2)
             {
-                this.infoFeedbackText.Text = "Bien, ahora levanta los brazos y estiralos por encima de la cabeza";
                 this.movimiento2(skeleton);
             }
+            //Completado el ejercicio se incrementa el contador de repeticiones, se vuelve al estado inicial para repetir el ejercicio
             if (this.estado == 3)
             {
-                this.infoFeedbackText.Text = "Bien, has completado el ejercicio. Vuelve a la posicion inicial";
-                this.estado = 0;
+                this.infoFeedbackText.Text = "Muy bien, has completado el ejercicio!!!\nVuelve a la posicion inicial";
                 this.repes++;
                 this.repeticionesText.Text = "Repes:\n" + this.repes;
+                this.estado = 0;
             }
         }
 
         //Comprueba que se encuentra en la posicion inicial pies separados a la altura de los hombros y las manos abajo pegadas al tronco
         private void movimientoInicial(Skeleton skeleton)
         {
-            this.infoFeedbackText.Text = "Separa las piernas a la altura de los hombros y baja los brazos";
+            this.infoFeedbackText.Text = "Separa las piernas a la altura de los hombros y baja los brazos hasta pegarlos al tronco";
             Joint tobilloDe = skeleton.Joints[JointType.AnkleRight];
             Joint tobilloIz = skeleton.Joints[JointType.AnkleLeft];
             Joint hombroDe = skeleton.Joints[JointType.ShoulderRight];
@@ -462,6 +469,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
 
             double separacion = Math.Abs(hombroDe.Position.X - hombroIz.Position.X);
 
+            //Comprueba que los brazos estan alineados hacia abajo
             if ((Math.Abs(tobilloDe.Position.X - tobilloIz.Position.X) > separacion) && this.brazosAlineados(skeleton) &&
                 hombroDe.Position.Y > muniecaDe.Position.Y && hombroIz.Position.Y > muniecaIz.Position.Y)
             {
@@ -478,7 +486,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         //Brazos levantados a la altura del hombro
         private void movimiento1(Skeleton skeleton)
         {
-            this.infoFeedbackText.Text = "Muy bien! ahora pon los brazos en cruz";
+            this.infoFeedbackText.Text = "Bien, has completado la posicion inicial\nAhora extiende los brazos hacia los lados, en cruz";
             Joint tobilloDe = skeleton.Joints[JointType.AnkleRight];
             Joint tobilloIz = skeleton.Joints[JointType.AnkleLeft];
             Joint hombroDe = skeleton.Joints[JointType.ShoulderRight];
@@ -492,6 +500,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             double errorDe = 0.15;
             double separacion = Math.Abs(hombroDe.Position.X - hombroIz.Position.X);
 
+            //Comprueba que las articulaciones hombro, codo y muñeca izquierda y derecha estan alineadas en el eje Y
             if ((Math.Abs(tobilloDe.Position.X - tobilloIz.Position.X) > separacion) &&
                 (Math.Abs(muniecaDe.Position.Y - hombroDe.Position.Y) < errorDe) && (Math.Abs(muniecaDe.Position.Y - hombroDe.Position.Y) > 0) &&
                 (Math.Abs(muniecaDe.Position.Y - codoDe.Position.Y) < errorDe) && (Math.Abs(muniecaDe.Position.Y - codoDe.Position.Y) > 0) &&
@@ -510,7 +519,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
         //Brazos levantados por encima de la cabeza
         private void movimiento2(Skeleton skeleton)
         {
-            this.infoFeedbackText.Text = "Bien, ahora levanta las manos por encima de la cabeza";
+            this.infoFeedbackText.Text = "Bien, ahora levanta los brazos por encima de la cabeza y da una palmada";
             Joint tobilloDe = skeleton.Joints[JointType.AnkleRight];
             Joint tobilloIz = skeleton.Joints[JointType.AnkleLeft];
             Joint hombroDe = skeleton.Joints[JointType.ShoulderRight];
@@ -522,6 +531,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
 
             double separacion = Math.Abs(hombroDe.Position.X - hombroIz.Position.X);
 
+            //Comprueba que los brazos estan alineados hacia arriba
             if ((Math.Abs(tobilloDe.Position.X - tobilloIz.Position.X) > separacion) && this.brazosAlineados(skeleton) && 
                 hombroDe.Position.Y < muniecaDe.Position.Y && hombroIz.Position.Y < muniecaIz.Position.Y)
             {
@@ -535,6 +545,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             }
         }
 
+        //Comprueba que los brazos estan alineados (llamada desde la funcion movimientoInicial y movimiento2)
         private bool brazosAlineados(Skeleton skeleton)
         {
             bool posicion=false;
@@ -549,6 +560,7 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             double errorIz = 0.15;
             double errorDe = 0.15;
 
+            //Comprueba que las articulaciones hombro, codo y muñeca izquierda y derecha estan alineadas en el eje X
             if ((Math.Abs(muniecaDe.Position.X - hombroDe.Position.X) < errorDe) && (Math.Abs(muniecaDe.Position.X - hombroDe.Position.X) > 0) &&
                 (Math.Abs(muniecaDe.Position.X - codoDe.Position.X) < errorDe) && (Math.Abs(muniecaDe.Position.X - codoDe.Position.X) > 0) &&
                 (Math.Abs(muniecaIz.Position.X - hombroIz.Position.X) < errorIz) && (Math.Abs(muniecaIz.Position.X - hombroIz.Position.X) > 0) &&
