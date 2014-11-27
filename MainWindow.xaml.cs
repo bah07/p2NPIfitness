@@ -477,9 +477,9 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             }
             else
             {
-                this.infoFeedbackText.Text += "\nTOd:" + tobilloDe.Position.X + "TOi:" + tobilloIz.Position.X + "\tSeparacion: " + separacion;
-                this.infoFeedbackText.Text += "\nMU-HOd:" + Math.Abs(muniecaDe.Position.X - hombroDe.Position.X) + "MU-COd:" + Math.Abs(muniecaDe.Position.X - codoDe.Position.X) + "\terror: " + hombroDe.Position.X * 0.15;
-                this.infoFeedbackText.Text += "\nMU-HOi:" + Math.Abs(muniecaIz.Position.X - hombroIz.Position.X) + "MU-COi:" + Math.Abs(muniecaIz.Position.X - codoIz.Position.X) + "\terror: " + hombroIz.Position.X * 0.15;
+                //this.infoFeedbackText.Text += "\nTOd:" + tobilloDe.Position.X + "TOi:" + tobilloIz.Position.X + "\tSeparacion: " + separacion;
+                //this.infoFeedbackText.Text += "\nMU-HOd:" + Math.Abs(muniecaDe.Position.X - hombroDe.Position.X) + "MU-COd:" + Math.Abs(muniecaDe.Position.X - codoDe.Position.X) + "\terror: " + hombroDe.Position.X * 0.15;
+                //this.infoFeedbackText.Text += "\nMU-HOi:" + Math.Abs(muniecaIz.Position.X - hombroIz.Position.X) + "MU-COi:" + Math.Abs(muniecaIz.Position.X - codoIz.Position.X) + "\terror: " + hombroIz.Position.X * 0.15;
             }
         }
 
@@ -511,8 +511,8 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             }
             else
             {
-                this.infoFeedbackText.Text += "\nMU-HOd:" + Math.Abs(muniecaDe.Position.Y - hombroDe.Position.Y) + "MU-COd:" + Math.Abs(muniecaDe.Position.Y - codoDe.Position.Y) + "\terror: " + hombroDe.Position.Y * 0.15;
-                this.infoFeedbackText.Text += "\nMU-HOi:" + Math.Abs(muniecaIz.Position.Y - hombroIz.Position.Y) + "MU-COi:" + Math.Abs(muniecaIz.Position.Y - codoIz.Position.Y) + "\terror: " + hombroIz.Position.Y * 0.15;
+                //this.infoFeedbackText.Text += "\nMU-HOd:" + Math.Abs(muniecaDe.Position.Y - hombroDe.Position.Y) + "MU-COd:" + Math.Abs(muniecaDe.Position.Y - codoDe.Position.Y) + "\terror: " + hombroDe.Position.Y * 0.15;
+                //this.infoFeedbackText.Text += "\nMU-HOi:" + Math.Abs(muniecaIz.Position.Y - hombroIz.Position.Y) + "MU-COi:" + Math.Abs(muniecaIz.Position.Y - codoIz.Position.Y) + "\terror: " + hombroIz.Position.Y * 0.15;
             }
         }
 
@@ -539,9 +539,9 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             }
             else
             {
-                this.infoFeedbackText.Text += "\nTOd:" + tobilloDe.Position.X + "TOi:" + tobilloIz.Position.X + "\tSeparacion: " + separacion;
-                this.infoFeedbackText.Text += "\nMU-HOd:" + Math.Abs(muniecaDe.Position.X - hombroDe.Position.X) + "MU-COd:" + Math.Abs(muniecaDe.Position.X - codoDe.Position.X) + "\terror: " + hombroDe.Position.X * 0.15;
-                this.infoFeedbackText.Text += "\nMU-HOi:" + Math.Abs(muniecaIz.Position.X - hombroIz.Position.X) + "MU-COi:" + Math.Abs(muniecaIz.Position.X - codoIz.Position.X) + "\terror: " + hombroIz.Position.X * 0.15;
+                //this.infoFeedbackText.Text += "\nTOd:" + tobilloDe.Position.X + "TOi:" + tobilloIz.Position.X + "\tSeparacion: " + separacion;
+                //this.infoFeedbackText.Text += "\nMU-HOd:" + Math.Abs(muniecaDe.Position.X - hombroDe.Position.X) + "MU-COd:" + Math.Abs(muniecaDe.Position.X - codoDe.Position.X) + "\terror: " + hombroDe.Position.X * 0.15;
+                //this.infoFeedbackText.Text += "\nMU-HOi:" + Math.Abs(muniecaIz.Position.X - hombroIz.Position.X) + "MU-COi:" + Math.Abs(muniecaIz.Position.X - codoIz.Position.X) + "\terror: " + hombroIz.Position.X * 0.15;
             }
         }
 
@@ -574,6 +574,3 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
 
     }
 }
-
-
-

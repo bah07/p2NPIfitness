@@ -22,3 +22,5 @@ C:\Users\borja\Desktop\P2fitness-WPF\obj\Debug\SkeletonBasics-WPF_MarkupCompile.
 C:\Users\borja\Desktop\P2fitness-WPF\obj\Debug\SkeletonBasics-WPF.g.resources
 C:\Users\borja\Desktop\P2fitness-WPF\obj\Debug\Microsoft.Samples.Kinect.SkeletonBasics.Properties.Resources.resources
 C:\Users\borja\Desktop\P2fitness-WPF\obj\Debug\SkeletonBasics-WPF.csproj.GenerateResource.Cache
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\SkeletonBasics-WPF.exe
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\SkeletonBasics-WPF.pdb
