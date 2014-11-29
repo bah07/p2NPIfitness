@@ -458,7 +458,6 @@ namespace Microsoft.Samples.Kinect.SkeletonBasics
             {
                 this.infoFeedbackText.Text = "Muy bien, has completado el ejercicio!!! Vuelve a la posicion inicial";
                 this.repes++;
-                this.repeticionesText.Text = "Repeticiones:\n" + this.repes;
                 this.estado = 0;
                 this.repeticionesText.Text = "Mov / Rep:\n" + this.estado + " / " + this.repes;
             }
