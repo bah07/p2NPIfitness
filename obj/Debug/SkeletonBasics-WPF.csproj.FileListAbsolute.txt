@@ -24,3 +24,13 @@ C:\Users\borja\Desktop\P2fitness-WPF\obj\Debug\Microsoft.Samples.Kinect.Skeleton
 C:\Users\borja\Desktop\P2fitness-WPF\obj\Debug\SkeletonBasics-WPF.csproj.GenerateResource.Cache
 C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\SkeletonBasics-WPF.exe
 C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\SkeletonBasics-WPF.pdb
+C:\Users\borja\Documents\GitHub\p2NPIfitness\bin\Debug\SkeletonBasics-WPF.exe
+C:\Users\borja\Documents\GitHub\p2NPIfitness\bin\Debug\SkeletonBasics-WPF.pdb
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\SkeletonBasics-WPF.csprojResolveAssemblyReference.cache
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\MainWindow.baml
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\MainWindow.g.cs
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\App.g.cs
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\SkeletonBasics-WPF_MarkupCompile.cache
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\SkeletonBasics-WPF.g.resources
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\Microsoft.Samples.Kinect.SkeletonBasics.Properties.Resources.resources
+C:\Users\borja\Documents\GitHub\p2NPIfitness\obj\Debug\SkeletonBasics-WPF.csproj.GenerateResource.Cache
